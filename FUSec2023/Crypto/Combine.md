@@ -2,7 +2,7 @@
 The symmetric crypto algorithm is much more secure, but the problem of key distribution is annoying. Why don't we combine both symmetric and asymmetric algorithm in a crypto system. What a brilliant idea!
 
 Attachment: *combine.py*
-```python
+```python3
 #!/usr/bin/env python3
 
 from Crypto.Util.number import getStrongPrime, bytes_to_long
@@ -48,7 +48,7 @@ ciphertext = e6c2921a3edb52639e871ebad04f16ff4580870a8522295cf58914b09fee749afcd
 
 Nhìn vào output được cung cấp, mình nhận thấy *e = 3*, dấu hiệu cho lỗ hổng *small e* trong RSA. Giải thích dễ hiểu thì khi *e* quá nhỏ, *m^e* sẽ nhỏ hơn *n*. Khi đó *m^e % n* sẽ bằng *m^e*. Vậy thì đơn giản để tìm lại được key, ta chỉ cần lấy căn bậc *e* của *cipherkey*.
 
-```python
+```python3
 from Crypto.Util.number import *
 from sympy import *
 from Crypto.Cipher import AES
@@ -68,7 +68,7 @@ print(key)
 ```
 
 Với key tìm được, mình thực hiện giải mã AES_ECB và ra được flag.
-```python
+```python3
 def unpad(s):
     return s[:-s[-1]]
 
