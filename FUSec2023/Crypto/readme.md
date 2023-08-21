@@ -1,3 +1,3 @@
 # FU Secathon 2023 Cryptography
-- [Combine](/Crypto/Combine.md)
-- [Secret Agent](/Crypto/Secret_Agent.md)
+- [Combine](/FUSec2023/Crypto/Combine.md)
+- [Secret Agent](/FUSec2023/Crypto/Secret_Agent.md)
