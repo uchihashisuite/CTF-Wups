@@ -5,7 +5,7 @@ nc 34.143.143.97 8000
 ```
 
 Attachment: *chal_server.py*
-```python
+```python3
 import base64
 import json
 import os
@@ -165,7 +165,7 @@ if __name__ == '__main__':
 Ở challenge này thì mình có thể tạo tài khoản và được cung cấp token cho tài khoản đó. Sau đó thì có thể thực hiện đăng nhập. Nếu mình có quyền "privileged_granted" thì có thể truy cập được vào mục *show flag* và lấy được flag.
 
 Trước hết thì mình để ý hàm tạo user:
-```python
+```python3
 def create_user(requestHandler):
     requestHandler.request.sendall(b'Your client id: ')
     client_id = requestHandler.rfile.readline().rstrip(b'\n').decode()
@@ -191,7 +191,7 @@ Your client id:
 Your token: yDb0q2pNaoySGmGrFNNWNWooRRl4soz6/g9oMrcLQBmuO+6LMqJuD5Lqc+OzwCUidMuWixJjkx4Zcexawgfyz64c7DGgXDgizbAtIOtwFGBsN210v6bTPAwI/x/pJGmZ
 ```
 Tuy nhiên thì token này cũng chưa ra ngay được flag vì muốn đăng nhập chúng ta cần phải điền cả *client_id*. Vì vậy mình tiến tới xem xét các hàm liên quan tới mã hóa:
-```python
+```python3
 key = os.urandom(16)
 iv1 = os.urandom(16)
 iv2 = os.urandom(16)
@@ -260,7 +260,7 @@ Vì là CBC nên ở đây, mình sẽ thực hiện tấn công **Padding Oracl
 Với bài này, phần token trong login chính là nơi chúng ta thực hiện tấn công. Message "Failed! Check your token again\n" sẽ là cơ sở để phát hiện unpadding thành công hay không.
 
 Code: 
-```python
+```python3
 from tqdm import tqdm
 from pwn import *
 from base64 import *
