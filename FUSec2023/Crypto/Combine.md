@@ -1,0 +1,90 @@
+### Combine
+The symmetric crypto algorithm is much more secure, but the problem of key distribution is annoying. Why don't we combine both symmetric and asymmetric algorithm in a crypto system. What a brilliant idea!
+
+Attachment: *combine.py*
+```python
+#!/usr/bin/env python3
+
+from Crypto.Util.number import getStrongPrime, bytes_to_long
+from Crypto.Cipher import AES
+from secret import flag, key
+
+def encrypt_message(key, msg):
+	BS = 16
+	pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+	msg = pad(msg).encode()
+	cipher = AES.new(key, AES.MODE_ECB)
+	ciphertext = cipher.encrypt(msg).hex()
+	return ciphertext
+
+def encrypt_key(key):
+	nbit = 2048
+	p = getStrongPrime(nbit // 2)
+	q = getStrongPrime(nbit // 2)
+	n = p * q
+	e = 3
+	m = bytes_to_long(key)
+	cipherkey = pow(m, e, n)
+	return n, e, cipherkey
+
+ciphertext = encrypt_message(key, flag)
+n, e, c = encrypt_key(key)
+
+print('n =', n)
+print('e =', e)
+print('cipherkey =', c)
+print('ciphertext =', ciphertext)
+
+```
+*output.txt*
+```
+n = 17209865306489383127800020243389994329129743604782790572071575275930356482173664633977129059765483365641382694889746793832394394570779520318736174413698255275805470489995770799549145326336810606098666485462172397721883061380164674372281155031229403077923081446873681038939824476853501573626662210456685550050398627753809494063023262928406194832122173907376911569530179213802008987425021865006236985258208235745676711294952229465208427722435166889999294578405054346630724018303425483416613451938567146420297094727347064526763529390676971710365525083049556260598332852178425692853805520818042005192063672211992678540011
+e = 3
+cipherkey = 142196723273747238898852175173915220249887834079871068954399297555327440564641299650087764716642697466878642687260087329740593337673114537926971425515696694822194006024953138119955781575720865321942965774838545548158954058397248000
+ciphertext = e6c2921a3edb52639e871ebad04f16ff4580870a8522295cf58914b09fee749afcdd94a0beb8471dbaa50ed37693653295d4e798798674e2048f5c233cd9aba1
+```
+
+Ở đây, flag được mã hóa thông qua AES_ECB với block size là 16-bits, cùng với đó là key được mã hóa dựa trên RSA.
+
+Nhìn vào output được cung cấp, mình nhận thấy *e = 3*, dấu hiệu cho lỗ hổng *small e* trong RSA. Giải thích dễ hiểu thì khi *e* quá nhỏ, *m^e* sẽ nhỏ hơn *n*. Khi đó *m^e % n* sẽ bằng *m^e*. Vậy thì đơn giản để tìm lại được key, ta chỉ cần lấy căn bậc *e* của *cipherkey*.
+
+```python
+from Crypto.Util.number import *
+from sympy import *
+from Crypto.Cipher import AES
+
+
+n = 17209865306489383127800020243389994329129743604782790572071575275930356482173664633977129059765483365641382694889746793832394394570779520318736174413698255275805470489995770799549145326336810606098666485462172397721883061380164674372281155031229403077923081446873681038939824476853501573626662210456685550050398627753809494063023262928406194832122173907376911569530179213802008987425021865006236985258208235745676711294952229465208427722435166889999294578405054346630724018303425483416613451938567146420297094727347064526763529390676971710365525083049556260598332852178425692853805520818042005192063672211992678540011
+e = 3
+cipherkey = 142196723273747238898852175173915220249887834079871068954399297555327440564641299650087764716642697466878642687260087329740593337673114537926971425515696694822194006024953138119955781575720865321942965774838545548158954058397248000
+ciphertext = "e6c2921a3edb52639e871ebad04f16ff4580870a8522295cf58914b09fee749afcdd94a0beb8471dbaa50ed37693653295d4e798798674e2048f5c233cd9aba1"
+
+ciphertext = bytes.fromhex(ciphertext)
+
+key = long_to_bytes(int(real_root(cipherkey, 3))).decode()
+print(key)
+
+# key = "secret#keysummerSuperSecureAyyah"
+```
+
+Với key tìm được, mình thực hiện giải mã AES_ECB và ra được flag.
+```python
+def unpad(s):
+    return s[:-s[-1]]
+
+def decrypt_message(key, ciphertext):
+    BS = 16
+    key = key.encode()
+    cipher = AES.new(key, AES.MODE_ECB)
+    ciphertext_bytes = bytes.fromhex(ciphertext)
+    plaintext_bytes = cipher.decrypt(ciphertext_bytes)
+    plaintext = unpad(plaintext_bytes).decode()
+    return plaintext
+
+ciphertext = "e6c2921a3edb52639e871ebad04f16ff4580870a8522295cf58914b09fee749afcdd94a0beb8471dbaa50ed37693653295d4e798798674e2048f5c233cd9aba1"
+
+decrypted_message = decrypt_message(key, ciphertext)
+print(decrypted_message)
+```
+
+Flag: FUSEC{The_combine_crypto_system_is_really_secure!!!}
