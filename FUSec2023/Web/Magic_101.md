@@ -1,4 +1,4 @@
-![image](https://github.com/hams0thuan/CTF-Wups/assets/93731698/bf203b6a-81e5-4b33-a70d-fbb7b26f4313)## Macgic 101 
+## Macgic 101 
 
 ### Link: https://magic.fptunisecathon2023.tech/
 
@@ -53,4 +53,18 @@ và mình nhận được thông báo thấy không khả nghi lắm, lúc này 
 
 - Tới đây mình dựa theo hint của author và search thêm một document hack tricks có liên quan tới lỗ hổng này [Bypass Python sandboxes](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#dissecting-python-objects).
 
-- Anh author có đưa mình một hint cực mạnh để giúp mình có thể liên kết các biểu thức lại với nhau 
+- Anh author có đưa mình một hint cực mạnh để giúp mình có thể liên kết các biểu thức lại với nhau:
+```python
+['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+'__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__',
+'__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'co_argcount',
+'co_cellvars', 'co_code', 'co_consts', 'co_filename', 'co_firstlineno', 'co_flags', 'co_freevars',
+'co_kwonlyargcount', 'co_lnotab', 'co_name', 'co_names', 'co_nlocals', 'co_posonlyargcount', 'co_stacksize',
+'co_varnames', 'replace']
+```
+- Sau một hồi tự brute force từng biểu thức một thì mình đã hoàn thiện payload cuối cùng `{self.__init__.__globals__[secret_function].__code__.co_consts}` và có được flag.
+
+![image](https://github.com/hams0thuan/CTF-Wups/assets/93731698/ddbc1f48-c98e-4f41-b673-ff4618df619f)
+
+- Mình nghĩ với một bài như này cần source code để có thể hiểu rõ hơn. Và sau cuộc thi thì mình có được Shine102 gửi một bài wup khá giống bài này nhưng mình cũng chưa hình dung rõ lắm vì trong write up source cũng chưa rõ ràng. Mong rằng mình sẽ có được full source code để hoàn thiện wup một các chỉn chu nhất.
+- Link wup Shine102 cho [mình](https://ctftime.org/writeup/27904) 🤜✋
