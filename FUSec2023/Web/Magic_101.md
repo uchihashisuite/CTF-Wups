@@ -67,4 +67,7 @@ và mình nhận được thông báo thấy không khả nghi lắm, lúc này 
 ![image](https://github.com/hams0thuan/CTF-Wups/assets/93731698/ddbc1f48-c98e-4f41-b673-ff4618df619f)
 
 - Mình nghĩ với một bài như này cần source code để có thể hiểu rõ hơn. Và sau cuộc thi thì mình có được Shine102 gửi một bài wup khá giống bài này nhưng mình cũng chưa hình dung rõ lắm vì trong write up source cũng chưa rõ ràng. Mong rằng mình sẽ có được full source code để hoàn thiện wup một các chỉn chu nhất.
+
+![image](https://github.com/hams0thuan/CTF-Wups/assets/93731698/4efc1738-e663-412f-80b5-de8ce0102bb6)
+
 - Link wup Shine102 cho [mình](https://ctftime.org/writeup/27904) 🤜✋
