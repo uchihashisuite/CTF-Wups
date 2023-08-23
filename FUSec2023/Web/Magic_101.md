@@ -51,7 +51,7 @@ và mình nhận được thông báo thấy không khả nghi lắm, lúc này 
 
 ![image](https://github.com/hams0thuan/CTF-Wups/assets/93731698/7421201d-cf80-4506-bc5b-d294a900a746)
 
-- Tới đây mình dựa theo hint của author và search thêm một document hack tricks có liên quan tới lỗ hổng này [Bypass Python sandboxes](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#dissecting-python-objects).
+- Tới đây mình dựa theo hint của author và search thêm một document hack tricks có liên quan tới lỗ hổng này [Bypass Python sandboxes](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#dissecting-python-objects) và [geeksforgeeks](https://www.geeksforgeeks.org/vulnerability-in-str-format-in-python/).
 
 - Anh author có đưa mình một hint cực mạnh để giúp mình có thể liên kết các biểu thức lại với nhau:
 ```python
