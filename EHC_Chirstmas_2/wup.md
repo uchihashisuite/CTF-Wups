@@ -1,5 +1,9 @@
 # EHC Chirtsmas 2
 
+![image](https://github.com/jiyuumarinshi/CTF-Wups/assets/93731698/285fe694-c32c-47d3-b546-a5af7d10affe)
+
+
+
 ## Phase1: 
 
 - Dùng wireshark bắt tập tin của game
