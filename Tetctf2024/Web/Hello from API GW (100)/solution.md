@@ -14,3 +14,6 @@ https://huk5xbypcc.execute-api.ap-southeast-2.amazonaws.com/dev/vulnerable?vulne
 AWS Account is not needed for this challenge
 
 
+Wup
+- https://the-x-magic.gitbook.io/cloud-sec/ctf-challenges/tetctf-2024/hello-from-api-gw
+- https://antoinenguyen-09.hashnode.dev/tetctf-2024?fbclid=IwAR1ZBbY_tbPuNrjPzjA8cvoe0FYgZmQgjOhm3wl2LqkvPr5WnqjYnwKqVzU
