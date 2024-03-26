@@ -19,3 +19,5 @@ See anything if you miss for VN2667
 ## **2024**
 | Name | Format | Writeup |
 | --- | --- | --- |
+| Tetctf2024 | Jeopardy | [Writeup](/Tetctf2024/description.md) |
+| bi0sctf2024 | Jeopardy | [Writeup](/bi0sCTF2024/description.md)
