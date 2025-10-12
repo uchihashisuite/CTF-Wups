@@ -1,2 +1,0 @@
-Read the flag (/flag)
-
